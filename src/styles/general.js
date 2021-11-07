@@ -14,4 +14,19 @@ export const general = StyleSheet.create({
     marginTop: 10,
   },
   p: {maxWidth: '100%', fontSize: 14, fontWeight: '600'},
+  input: {
+    height: 40,
+    borderWidth: 1,
+    padding: 10,
+    flex: 1,
+    marginRight: 10,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  icon: {
+    position: 'absolute',
+    right: 10,
+  },
 });

@@ -21,9 +21,6 @@ export default function InfoProvider({children}) {
       const resp = await axios.get(
         'https://run.mocky.io/v3/eef3c24d-5bfd-4881-9af7-0b404ce09507',
       );
-      resp.data.articles.sort((a, b) => {
-        return new Date(b.userRating) - new Date(a.userRating);
-      });
       setStorage(resp.data);
       dispatch({
         type: FETCH_HOTELS,

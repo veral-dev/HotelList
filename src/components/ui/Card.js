@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
@@ -7,9 +8,12 @@ import {
   TouchableHighlight,
   FlatList,
 } from 'react-native';
+import {Icon} from 'react-native-elements';
+import {general} from '../../styles/general';
+import {starsFnc} from '../../utils';
 
 const CardSection = ({item, onPress}) => {
-  const {name, gallery, price} = item;
+  const {name, gallery, price, userRating, currency, stars} = item;
 
   return (
     <View style={styles.card}>
@@ -17,7 +21,7 @@ const CardSection = ({item, onPress}) => {
         activeOpacity={0.6}
         underlayColor="#DDDDDD"
         onPress={() => onPress(name)}>
-        <View>
+        <View style={styles.directionRow}>
           {!!gallery && (
             <Image
               style={styles.image}
@@ -27,8 +31,34 @@ const CardSection = ({item, onPress}) => {
             />
           )}
 
-          <Text style={[styles.title]}>{name}</Text>
-          <Text style={[styles.description]}>Price per night:{price}€</Text>
+          <View style={styles.rightBlock}>
+            <View
+              style={[
+                general.ratingBox,
+                {backgroundColor: userRating > 8 ? '#7cb342' : '#ff9b05'},
+              ]}>
+              <Text style={general.ratingText}>{userRating}</Text>
+            </View>
+            <View style={styles.stars}>
+              <Text style={styles.text}>Hotel</Text>
+              {starsFnc(stars).map(() => (
+                <Icon
+                  type="material-community"
+                  name="star"
+                  color="#f8a523"
+                  size={20}
+                />
+              ))}
+            </View>
+
+            <Text style={[styles.title]}>{name}</Text>
+            <View style={{position: 'absolute', bottom: 0, right: 0}}>
+              <Text style={styles.price}>
+                {price}
+                {currency}
+              </Text>
+            </View>
+          </View>
         </View>
       </TouchableHighlight>
     </View>
@@ -49,12 +79,9 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
     borderRadius: 8,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    marginVertical: 10,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginBottom: 10,
     shadowRadius: 3,
     elevation: 5,
   },
@@ -62,21 +89,32 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   title: {
-    textAlign: 'center',
-    maxWidth: '100%',
-    fontSize: 18,
-    fontWeight: '900',
+    marginTop: 5,
+    fontWeight: '700',
   },
-  description: {
-    marginTop: 2,
+  text: {
     fontSize: 14,
     fontWeight: '400',
-    textAlign: 'center',
   },
+
   image: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    height: 80,
+    width: '40%',
+    height: 120,
     marginBottom: 2,
+  },
+  directionRow: {
+    flexDirection: 'row',
+  },
+  stars: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+  },
+  rightBlock: {
+    marginHorizontal: 10,
+    width: '55%',
+  },
+  price: {
+    fontSize: 17,
+    fontWeight: '900',
   },
 });

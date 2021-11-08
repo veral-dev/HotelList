@@ -5,6 +5,7 @@ export const general = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 15,
     marginHorizontal: 15,
     maxHeight: '80%',
+    paddingBottom: 20,
   },
   h1: {
     textAlign: 'center',
@@ -12,6 +13,7 @@ export const general = StyleSheet.create({
     fontSize: 25,
     fontWeight: '900',
     marginTop: 10,
+    color: '#fff',
   },
   p: {maxWidth: '100%', fontSize: 14, fontWeight: '600'},
   input: {
@@ -24,9 +26,18 @@ export const general = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
     position: 'absolute',
     right: 10,
   },
+  ratingBox: {
+    width: 40,
+    height: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+  },
+  ratingText: {color: '#fff', fontWeight: '900'},
 });

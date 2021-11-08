@@ -33,7 +33,7 @@ npx react-native run-android
 
 ### Ios
 
-npx react-native run-android
+npx react-native run-ios
 
 ### External dependencies
 

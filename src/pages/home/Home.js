@@ -50,7 +50,7 @@ export default function Home({navigation}) {
 
   return (
     <>
-      <Topbar text="HotelList.net" />
+      <Topbar text="HotelList" />
       <View style={[general.pageContainer]}>
         {loading ? (
           <Spinner />

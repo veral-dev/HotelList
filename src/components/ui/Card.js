@@ -41,8 +41,9 @@ const CardSection = ({item, onPress}) => {
             </View>
             <View style={styles.stars}>
               <Text style={styles.text}>Hotel</Text>
-              {starsFnc(stars).map(() => (
+              {starsFnc(stars).map((elm, idx) => (
                 <Icon
+                  key={idx}
                   type="material-community"
                   name="star"
                   color="#f8a523"
